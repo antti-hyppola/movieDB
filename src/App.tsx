@@ -1,14 +1,23 @@
 import React from 'react';
-import { Grommet } from 'grommet'
+import { Grommet } from 'grommet';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import SearchPage from './components/SearchPage'
 //Components
 import Navbar from './components/layout/Navbar'
 
 function App() {
   return (
-    <Grommet plain>
-      <Navbar />
+    <Router>
+      <Grommet plain>
+        <Navbar />
       Hello world
-    </Grommet>
+    <Switch>
+          <Route path='/search'>
+            <SearchPage />
+          </Route>
+        </Switch>
+      </Grommet>
+    </Router>
   );
 }
 
