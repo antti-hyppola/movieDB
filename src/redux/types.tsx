@@ -1,0 +1,3 @@
+export const SET_MOVIES = 'SET_MOVIES'
+export const SEARCH_MOVIES = 'SEARCH_MOVIES'
+export const SEARCH_TRAILER = 'SEARCH_TRAILER'
