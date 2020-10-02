@@ -1,9 +1,5 @@
-import React from 'react'
+import { SET_MOVIES, SEARCH_MOVIES, SEARCH_TRAILER } from '../types'
 
-export default function movieReducer() {
-    return (
-        <div>
-
-        </div>
-    )
+const initialState = {
+    
 }
