@@ -1,4 +1,4 @@
-import { SET_MOVIES, SEARCH_MOVIES, SEARCH_TRAILER, MovieActionTypes, MovieState } from '../types'
+import { SET_MOVIES, SEARCH_MOVIES, SEARCH_TRAILER, MovieActionTypes, MovieState, EMPTY_MOVIES } from '../types'
 
 const initialState: MovieState = {
     movies: [],
@@ -21,11 +21,16 @@ export function movieReducer(state = initialState, action: MovieActionTypes): Mo
             return {
                 movies: [
                     ...state.movies,
-                    action.payload
+                    ...action.payload
                 ],
                 movie: {
                     ...state.movie
                 }
+            }
+        case EMPTY_MOVIES:
+            return {
+                movies: [],
+                movie: {}
             }
         default:
             return state

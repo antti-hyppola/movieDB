@@ -1,6 +1,7 @@
 export const SET_MOVIES = 'SET_MOVIES'
 export const SEARCH_MOVIES = 'SEARCH_MOVIES'
 export const SEARCH_TRAILER = 'SEARCH_TRAILER'
+export const EMPTY_MOVIES = 'EMPTY_MOVIES'
 
 export interface Movie {
     results: [];
@@ -18,7 +19,7 @@ interface SetMoviesAction {
 
 interface SearchMoviesAction {
     type: typeof SEARCH_MOVIES;
-    payload: Movie;
+    payload: Movie[];
 }
 
 interface SearchTrailerAction {
@@ -26,4 +27,8 @@ interface SearchTrailerAction {
     payload: Movie;
 }
 
-export type MovieActionTypes = SetMoviesAction | SearchMoviesAction | SearchTrailerAction;
+interface EmptyMoviesAction {
+    type: typeof EMPTY_MOVIES;
+}
+
+export type MovieActionTypes = SetMoviesAction | SearchMoviesAction | SearchTrailerAction | EmptyMoviesAction;

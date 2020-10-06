@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import axios from 'axios'
-import SearchPage from '../SearchPage'
 import { Redirect } from 'react-router-dom'
+import { searchMovies } from '../../redux/actions/movieActions'
+import { useDispatch } from 'react-redux'
 //Grommet
 import { Nav, Anchor, TextInput } from 'grommet'
 //Icons
@@ -17,22 +17,13 @@ const SearchContainer = styled.div`
 
 export default function Navbar() {
     const [query, setQuery] = useState('')
-    const [data, setData] = useState(null)
     const [search, setSearch] = useState(false)
-
-    const apiKey = process.env.REACT_APP_API_KEY
-
-    async function searchMovies() {
-        const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${query}&page=1`
-        const res = await axios.get(url)
-        setData(res.data.results)
-        setSearch(true)
-    }
+    const dispatch = useDispatch();
 
     const handleSearch = (e: any) => {
         if (e) e.preventDefault()
-        searchMovies()
-        console.log(data)
+        dispatch(searchMovies(query))
+        setSearch(true)
     }
     return (
         <>
