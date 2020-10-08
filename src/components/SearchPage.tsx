@@ -1,26 +1,25 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { MovieState } from '../redux/types'
+import MovieCard from './MovieCard'
+import { Grid } from 'grommet'
 
 interface RootState {
     movies: MovieState
 }
 
-export default function SearchPage() {
+const SearchPage: React.FC = () => {
     const movies = useSelector((state: RootState) => state.movies.movies)
+
+    let movieMarkUp = movies.map((movie: any, index: number) => {
+        return < MovieCard key={index} movie={movie} />
+    })
+
     return (
-        <div>
-            This is the search page and here are the results:
-            {console.log(movies[0])}
-            {movies && movies.map((movie: any, index: number) => {
-                console.log(movie);
-                return (<div>
-                    <li key={index} >{movie.title}</li>
-                    <li key={index} >{movie.overview}</li>
-                    <li key={index} >{movie.release_date}</li>
-                    <hr />
-                </div>)
-            })}
-        </div>
+        <Grid columns='medium' justify='center'>
+            {movieMarkUp}
+        </Grid >
     )
 }
+
+export default SearchPage

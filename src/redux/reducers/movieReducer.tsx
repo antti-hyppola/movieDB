@@ -2,7 +2,13 @@ import { SET_MOVIES, SEARCH_MOVIES, SEARCH_TRAILER, MovieActionTypes, MovieState
 
 const initialState: MovieState = {
     movies: [],
-    movie: {}
+    movie: {
+        title: '',
+        id: 0,
+        overview: '',
+        poster_path: '',
+        release_date: ''
+    }
 }
 
 export function movieReducer(state = initialState, action: MovieActionTypes): MovieState {
@@ -30,7 +36,13 @@ export function movieReducer(state = initialState, action: MovieActionTypes): Mo
         case EMPTY_MOVIES:
             return {
                 movies: [],
-                movie: {}
+                movie: {
+                    title: '',
+                    id: 0,
+                    overview: '',
+                    poster_path: '',
+                    release_date: ''
+                }
             }
         default:
             return state

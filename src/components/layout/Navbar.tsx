@@ -19,10 +19,11 @@ export default function Navbar() {
     const [query, setQuery] = useState('')
     const [search, setSearch] = useState(false)
     const dispatch = useDispatch();
+    let searchQuery = query.replace(/\s+/g, '%20')
 
     const handleSearch = (e: any) => {
         if (e) e.preventDefault()
-        dispatch(searchMovies(query))
+        dispatch(searchMovies(searchQuery))
         setSearch(true)
     }
     return (

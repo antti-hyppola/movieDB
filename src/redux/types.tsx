@@ -9,7 +9,13 @@ export interface Movie {
 
 export interface MovieState {
     movies: Movie[];
-    movie: {};
+    movie: {
+        title: string;
+        id: number;
+        overview: string;
+        poster_path: string;
+        release_date: string;
+    };
 }
 
 interface SetMoviesAction {
