@@ -1,7 +1,8 @@
 import React from 'react';
 import { Grommet } from 'grommet';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import SearchPage from './components/SearchPage'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import SearchPage from './pages/SearchPage'
+import Home from './pages/Home'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 //Components
@@ -13,8 +14,10 @@ function App() {
       <Provider store={store}>
         <Router>
           <Navbar />
-          Hello world
           <Switch>
+            <Route exact path='/'>
+              <Home />
+            </Route>
             <Route path='/search'>
               <SearchPage />
             </Route>
