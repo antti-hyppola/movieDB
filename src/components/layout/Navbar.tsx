@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { searchMovies } from '../../redux/actions/movieActions'
 import { useDispatch } from 'react-redux'
 //Grommet
-import { Nav, Anchor, TextInput } from 'grommet'
+import { Nav, Anchor, TextInput, Button } from 'grommet'
 //Icons
 import { AppsRounded, Home, Search } from 'grommet-icons'
 //Styles
@@ -33,7 +33,7 @@ export default function Navbar() {
                 <SearchContainer>
                     <form onSubmit={handleSearch}>
                         <TextInput name='search' placeholder='Search' icon={<Search />} value={query} onChange={(e) => setQuery(e.target.value)} size='small' />
-                        <input type='submit' />
+                        <Button type='submit' label='Search' />
                     </form>
                 </SearchContainer>
                 <Anchor icon={<AppsRounded />} />

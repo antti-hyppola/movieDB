@@ -7,7 +7,8 @@ const initialState: MovieState = {
         id: 0,
         overview: '',
         poster_path: '',
-        release_date: ''
+        release_date: '',
+        backdrop_path: ''
     }
 }
 
@@ -17,7 +18,7 @@ export function movieReducer(state = initialState, action: MovieActionTypes): Mo
             return {
                 movies: [
                     ...state.movies,
-                    action.payload
+                    ...action.payload
                 ],
                 movie: {
                     ...state.movie
@@ -41,7 +42,8 @@ export function movieReducer(state = initialState, action: MovieActionTypes): Mo
                     id: 0,
                     overview: '',
                     poster_path: '',
-                    release_date: ''
+                    release_date: '',
+                    backdrop_path: ''
                 }
             }
         default:

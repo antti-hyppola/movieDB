@@ -15,12 +15,13 @@ export interface MovieState {
         overview: string;
         poster_path: string;
         release_date: string;
+        backdrop_path: string
     };
 }
 
 interface SetMoviesAction {
     type: typeof SET_MOVIES;
-    payload: Movie;
+    payload: Movie[];
 }
 
 interface SearchMoviesAction {
