@@ -22,7 +22,7 @@ export default function Navbar() {
     let searchQuery = query.replace(/\s+/g, '%20')
 
     const handleSearch = (e: any) => {
-        if (e) e.preventDefault()
+        e.preventDefault()
         dispatch(searchMovies(searchQuery))
         setSearch(true)
     }

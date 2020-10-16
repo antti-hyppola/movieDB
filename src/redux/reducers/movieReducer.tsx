@@ -1,4 +1,4 @@
-import { SET_MOVIES, SEARCH_MOVIES, SEARCH_TRAILER, MovieActionTypes, MovieState, EMPTY_MOVIES } from '../types'
+import { SET_MOVIES, SEARCH_MOVIES, SET_MOVIE, MovieActionTypes, MovieState, EMPTY_MOVIES, CLEAR_MOVIE } from '../types'
 
 const initialState: MovieState = {
     movies: [],
@@ -8,7 +8,9 @@ const initialState: MovieState = {
         overview: '',
         poster_path: '',
         release_date: '',
-        backdrop_path: ''
+        backdrop_path: '',
+        type: '',
+        key: ''
     }
 }
 
@@ -34,16 +36,37 @@ export function movieReducer(state = initialState, action: MovieActionTypes): Mo
                     ...state.movie
                 }
             }
+        case SET_MOVIE:
+            return {
+                movies: [
+                    ...state.movies
+                ],
+                movie: {
+                    ...state.movie,
+                    ...action.payload
+                }
+            }
         case EMPTY_MOVIES:
             return {
                 movies: [],
+                movie: {
+                    ...state.movie
+                }
+            }
+        case CLEAR_MOVIE:
+            return {
+                movies: [
+                    ...state.movies
+                ],
                 movie: {
                     title: '',
                     id: 0,
                     overview: '',
                     poster_path: '',
                     release_date: '',
-                    backdrop_path: ''
+                    backdrop_path: '',
+                    type: '',
+                    key: ''
                 }
             }
         default:

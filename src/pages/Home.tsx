@@ -21,7 +21,7 @@ const Home: React.FC = () => {
         <div>
             Welcome to Movie Database!
             <Box height='65vh' width='60vw'>
-                <Carousel fill>
+                <Carousel fill play={5000} >
                     {movies.map((movie: any, index: number) => {
                         return < TrailerCard movie={movie} key={index} />
                     }
