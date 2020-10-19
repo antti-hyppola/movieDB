@@ -9,7 +9,7 @@ interface RootState {
 }
 
 const SearchPage: React.FC = () => {
-    const movies = useSelector((state: RootState) => state.movies.movies)
+    const movies = useSelector((state: RootState) => state.movies.movies.movieSearch)
 
     let movieMarkUp = movies.map((movie: any, index: number) => {
         return < MovieCard key={index} movie={movie} />

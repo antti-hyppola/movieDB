@@ -1,4 +1,7 @@
-export const SET_MOVIES = 'SET_MOVIES'
+export const SET_POPULAR = 'SET_POPULAR'
+export const SET_PLAYING_NOW = 'SET_PLAYING_NOW'
+export const SET_COMING_SOON = 'SET_COMING_SOON'
+export const SET_TOP_RATED = 'SET_TOP_RATED'
 export const SEARCH_MOVIES = 'SEARCH_MOVIES'
 export const SET_MOVIE = 'SET_MOVIE'
 export const EMPTY_MOVIES = 'EMPTY_MOVIES'
@@ -9,7 +12,13 @@ export interface Movie {
 }
 
 export type MovieState = {
-    movies: Movie[];
+    movies: {
+        playingNow: Movie[];
+        comingSoon: Movie[];
+        topRated: Movie[];
+        popularMovies: Movie[];
+        movieSearch: Movie[];
+    }
     movie: {
         title?: string;
         id: number;
@@ -22,8 +31,20 @@ export type MovieState = {
     };
 }
 
-interface SetMoviesAction {
-    type: typeof SET_MOVIES;
+interface SetPopularAction {
+    type: typeof SET_POPULAR;
+    payload: Movie[];
+}
+interface SetComingSoonAction {
+    type: typeof SET_COMING_SOON;
+    payload: Movie[];
+}
+interface SetTopRatedAction {
+    type: typeof SET_TOP_RATED;
+    payload: Movie[];
+}
+interface SetPlayingNowAction {
+    type: typeof SET_PLAYING_NOW;
     payload: Movie[];
 }
 
@@ -44,4 +65,4 @@ interface ClearMovieAction {
     type: typeof CLEAR_MOVIE;
 }
 
-export type MovieActionTypes = SetMoviesAction | SearchMoviesAction | SetMovieAction | EmptyMoviesAction | ClearMovieAction;
+export type MovieActionTypes = SetPopularAction | SetComingSoonAction | SetPlayingNowAction | SetTopRatedAction | SearchMoviesAction | SetMovieAction | EmptyMoviesAction | ClearMovieAction;
