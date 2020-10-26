@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMovies } from '../redux/actions/movieActions'
-import { MovieState, SET_COMING_SOON, SET_PLAYING_NOW, SET_POPULAR, SET_TOP_RATED } from '../redux/types'
+import { RootState, SET_COMING_SOON, SET_PLAYING_NOW, SET_POPULAR, SET_TOP_RATED } from '../redux/types'
 import { Box, Carousel, Grid } from 'grommet'
 import TrailerCard from '../components/TrailerCard'
 import MovieCard from '../components/MovieCard'
 
-interface RootState {
-    movies: MovieState
-}
 const apiKey = process.env.REACT_APP_API_KEY
 
 const Home: React.FC = () => {

@@ -7,7 +7,7 @@ export const SET_MOVIE = 'SET_MOVIE'
 export const EMPTY_MOVIES = 'EMPTY_MOVIES'
 export const CLEAR_MOVIE = 'CLEAR_MOVIE'
 
-export interface Movie {
+interface Movie {
     results: [];
 }
 
@@ -28,7 +28,22 @@ export type MovieState = {
         backdrop_path?: string;
         type?: string;
         key?: string;
+        vote_average?: number;
+        vote_count?: number;
+        videos: {
+            [results: string]: [
+                {
+                    type: string;
+                    key: string;
+                }
+            ]
+        }
     };
+}
+
+export type RootState = {
+    movies: MovieState;
+    movie: MovieState['movie']
 }
 
 interface SetPopularAction {

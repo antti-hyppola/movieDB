@@ -1,4 +1,4 @@
-import { SET_POPULAR, SEARCH_MOVIES, SET_MOVIE, EMPTY_MOVIES, CLEAR_MOVIE, SET_TOP_RATED, SET_PLAYING_NOW } from '../types'
+import { SEARCH_MOVIES, SET_MOVIE, EMPTY_MOVIES, CLEAR_MOVIE } from '../types'
 import axios from 'axios'
 
 const apiKey = process.env.REACT_APP_API_KEY
@@ -7,6 +7,14 @@ export const getMovies = (url: string, dispatchType: any) => (dispatch: any) => 
     dispatch({ type: EMPTY_MOVIES });
     axios.get(url).then(res => {
         dispatch({ type: dispatchType, payload: res.data.results })
+    }).catch(err => console.log(err))
+}
+
+export const getMovie = (id: string) => (dispatch: any) => {
+    dispatch({ type: CLEAR_MOVIE });
+    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US&append_to_response=videos`
+    axios.get(url).then(res => {
+        dispatch({ type: SET_MOVIE, payload: res.data })
     }).catch(err => console.log(err))
 }
 

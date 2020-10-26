@@ -16,7 +16,10 @@ const initialState: MovieState = {
         release_date: '',
         backdrop_path: '',
         type: '',
-        key: ''
+        key: '',
+        vote_average: 0,
+        vote_count: 0,
+        videos: {}
     }
 }
 
@@ -115,7 +118,10 @@ export function movieReducer(state = initialState, action: MovieActionTypes): Mo
                     release_date: '',
                     backdrop_path: '',
                     type: '',
-                    key: ''
+                    key: '',
+                    vote_count: 0,
+                    vote_average: 0,
+                    videos: {}
                 }
             }
         default:

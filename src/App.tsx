@@ -3,6 +3,7 @@ import { Grommet } from 'grommet';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SearchPage from './pages/SearchPage'
 import Home from './pages/Home'
+import Title from './pages/Title'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 //Components
@@ -20,6 +21,9 @@ function App() {
             </Route>
             <Route path='/search'>
               <SearchPage />
+            </Route>
+            <Route path='/titles/:id'>
+              <Title />
             </Route>
           </Switch>
         </Router>
