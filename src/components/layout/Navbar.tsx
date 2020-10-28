@@ -1,17 +1,26 @@
 import React, { useState } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import { searchMovies } from '../../redux/actions/movieActions'
 import { useDispatch } from 'react-redux'
 //Grommet
-import { Nav, Anchor, TextInput, Button } from 'grommet'
+import { Nav, RoutedAnchor, TextInput, Button, Form, FormField, Box } from 'grommet'
 //Icons
 import { AppsRounded, Home, Search } from 'grommet-icons'
 //Styles
 import styled from 'styled-components'
-const SearchContainer = styled.div`
-    width: 35vw;
-    height: 5vh;
-    padding-top: 5px;
+const SearchContainer = styled(Box)`
+    width: 100%;
+    height: 8vh;
+    padding-top: 4px;
+    display: flex;
+    align-items: center;
+`
+const MyButton = styled(Button)`
+    height: 60%;
+`
+const MyNav = styled(Nav)`
+    
+    width: 100%;
 `
 
 
@@ -28,16 +37,17 @@ export default function Navbar() {
     }
     return (
         <>
-            <Nav direction='row-responsive' elevation='small' background='neutral-2' justify='center'>
-                <Anchor icon={<Home />} />
-                <SearchContainer>
-                    <form onSubmit={handleSearch}>
-                        <TextInput name='search' placeholder='Search' icon={<Search />} value={query} onChange={(e) => setQuery(e.target.value)} size='small' />
-                        <Button type='submit' label='Search' />
-                    </form>
-                </SearchContainer>
-                <Anchor icon={<AppsRounded />} />
-            </Nav>
+            <MyNav background='#4C495D' direction='row-responsive' elevation='small' align='center' justify='center' alignContent='around'>
+                <RoutedAnchor path='/' icon={<Home />} />
+                <Form onSubmit={handleSearch}>
+                    <SearchContainer justify='center' direction='row' gap='medium'>
+                        <FormField>
+                            <TextInput name='search' placeholder='Search' icon={<Search />} value={query} onChange={(e) => setQuery(e.target.value)} size='small' />
+                        </FormField>
+                        <MyButton hoverIndicator='background' size='small' secondary type='submit' label='Search' />
+                    </SearchContainer>
+                </Form>
+            </MyNav>
             {search && <Redirect to='/search' />}
         </>
     )
