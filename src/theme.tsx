@@ -3,10 +3,11 @@ export const theme = {
         font: {
             family: 'Roboto',
         },
-        colors: {
-            text: '#D1D7E0'
-        },
-
+        focus: {
+            border: {
+                color: '#802BB1'
+            }
+        }
     },
     anchor: {
         color: '#D1D7E0'

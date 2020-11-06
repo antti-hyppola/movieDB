@@ -7,6 +7,24 @@ import { getMovie } from '../redux/actions/movieActions'
 import { RootState } from '../redux/types'
 //Grommet
 import { Image, Heading, Main, Paragraph, List } from 'grommet'
+//Styles
+import styled from 'styled-components'
+const Poster = styled(Image)`
+    grid-area: poster;
+    max-width: 40vw;
+    height: auto;
+`
+const Container = styled(Main)`
+    margin: 12px;
+    display: grid;
+    grid-column-gap: 6%;
+    grid-template-columns: 45% 23% 15%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    'poster title .'
+    'poster overview videos'
+    'poster release rating';
+`
 
 interface ParamTypes {
     id: string;
@@ -22,15 +40,20 @@ export default function Title() {
         dispatch(getMovie(id))
     }, [])
 
+    const handleClick = (event: any) => {
+        videos.results.forEach((video: any) => {
+            if (video.name === event.item) window.open(`https://www.youtube.com/watch?v=${video.key}`, '_blank') || window.location.replace(`https://www.youtube.com/watch?v=${video.key}`)
+        })
+    }
 
     return (
-        <Main align='center'>
-            <Heading>{movie.title}</Heading>
-            <Image fit='contain' src={imagePath} />
-            <Paragraph fill>{movie.overview}</Paragraph>
-            <Paragraph fill>Release date: {movie.release_date}</Paragraph>
-            <Paragraph fill>Rating: {movie.vote_average} Total votes: {movie.vote_count}</Paragraph>
-            <List data={videos.results && videos.results.map((video: any) => (video.type))} />
-        </Main>
+        <Container align='center'>
+            <Poster src={imagePath} />
+            <Heading style={{ gridArea: 'title' }}>{movie.title}</Heading>
+            <Paragraph style={{ gridArea: 'overview' }} fill>{movie.overview}</Paragraph>
+            <Paragraph style={{ gridArea: 'release' }} fill>Release date: {movie.release_date}</Paragraph>
+            <Paragraph style={{ gridArea: 'rating' }} fill>Rating: {movie.vote_average} Total votes: {movie.vote_count}</Paragraph>
+            <List onClickItem={(event: any) => handleClick(event)} style={{ gridArea: 'videos' }} data={videos.results && videos.results.map((video: any) => (video.name))} />
+        </Container>
     )
 }

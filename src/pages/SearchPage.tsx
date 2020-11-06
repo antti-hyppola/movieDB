@@ -2,7 +2,8 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { MovieState } from '../redux/types'
 import MovieCard from '../components/MovieCard'
-import { Grid } from 'grommet'
+import { Box, Grid, Heading } from 'grommet'
+
 
 interface RootState {
     movies: MovieState
@@ -16,14 +17,18 @@ const SearchPage: React.FC = () => {
     })
 
     let render = !movies.length ? (
-        <h1>Search for movie titles above</h1>
+        <Heading>Search for movie titles above</Heading>
     ) : (
-            <Grid columns='medium' justify='center'>
+            <Grid columns={['small', 'small', 'small', 'small', 'small']} gap='medium' justify='center'>
                 {movieMarkUp}
             </Grid >
         )
 
-    return render
+    return (
+        <Box align='center'>
+            {render}
+        </Box>
+    )
 }
 
 export default SearchPage
