@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { MovieState } from '../redux/types'
 import { openTrailer } from '../redux/actions/movieActions'
 //Grommet
-import { Card, Button, Paragraph } from 'grommet'
+import { Card, Button } from 'grommet'
 //Styles
 import styled from 'styled-components'
 const TrailerText = styled.div`

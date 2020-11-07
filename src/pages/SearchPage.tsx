@@ -17,7 +17,7 @@ const SearchPage: React.FC = () => {
     })
 
     let render = !movies.length ? (
-        <Heading>Search for movie titles above</Heading>
+        <Heading>No movies found. Enter a title above.</Heading>
     ) : (
             <Grid columns={['small', 'small', 'small', 'small', 'small']} gap='medium' justify='center'>
                 {movieMarkUp}

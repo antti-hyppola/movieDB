@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, useHistory } from 'react-router-dom'
 import { searchMovies } from '../../redux/actions/movieActions'
 import { useDispatch } from 'react-redux'
 //Grommet
-import { Nav, RoutedAnchor, TextInput, Button, Form, FormField, Box } from 'grommet'
+import { Nav, Anchor, TextInput, Button, Form, FormField, Box } from 'grommet'
 //Icons
 import { Home, Search } from 'grommet-icons'
 //Styles
@@ -31,6 +31,7 @@ export default function Navbar() {
     const [query, setQuery] = useState('')
     const [search, setSearch] = useState(false)
     const dispatch = useDispatch();
+    const history = useHistory();
     let searchQuery = query.replace(/\s+/g, '%20')
 
     const handleSearch = (e: any) => {
@@ -38,10 +39,12 @@ export default function Navbar() {
         dispatch(searchMovies(searchQuery))
         setSearch(true)
     }
+
+
     return (
         <>
             <MyNav background='#4C495D' direction='row' elevation='small' align='center' justify='center' alignContent='around'>
-                <RoutedAnchor path='/' icon={<Home />} />
+                <Anchor onClick={() => history.push('/')} icon={<Home />} />
                 <Form onSubmit={handleSearch}>
                     <SearchContainer justify='center' direction='row' gap='medium'>
                         <FormField>

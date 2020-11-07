@@ -28,7 +28,7 @@ const Home: React.FC = () => {
         dispatch(getMovies(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1&region=GB`, SET_PLAYING_NOW))
         //Get upcoming movies
         dispatch(getMovies(`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=1&region=GB`, SET_COMING_SOON))
-    }, [])
+    }, [dispatch])
 
     return (
         <Box align='center'>

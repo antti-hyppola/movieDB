@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import Placeholder from '../images/placeholder.png'
+//Components
+import NotFound from '../components/layout/NotFound'
 //Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { getMovie } from '../redux/actions/movieActions'
@@ -8,6 +9,7 @@ import { RootState } from '../redux/types'
 //Grommet
 import { Image, Heading, Main, Paragraph, List } from 'grommet'
 //Styles
+import Placeholder from '../images/placeholder.png'
 import styled from 'styled-components'
 const Poster = styled(Image)`
     grid-area: poster;
@@ -38,7 +40,7 @@ export default function Title() {
     let imagePath = movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : Placeholder
     useEffect(() => {
         dispatch(getMovie(id))
-    }, [])
+    }, [dispatch, id])
 
     const handleClick = (event: any) => {
         videos.results.forEach((video: any) => {
@@ -47,13 +49,15 @@ export default function Title() {
     }
 
     return (
-        <Container align='center'>
-            <Poster src={imagePath} />
-            <Heading style={{ gridArea: 'title' }}>{movie.title}</Heading>
-            <Paragraph style={{ gridArea: 'overview' }} fill>{movie.overview}</Paragraph>
-            <Paragraph style={{ gridArea: 'release' }} fill>Release date: {movie.release_date}</Paragraph>
-            <Paragraph style={{ gridArea: 'rating' }} fill>Rating: {movie.vote_average} Total votes: {movie.vote_count}</Paragraph>
-            <List onClickItem={(event: any) => handleClick(event)} style={{ gridArea: 'videos' }} data={videos.results && videos.results.map((video: any) => (video.name))} />
-        </Container>
+        movie.id === 0 ? <NotFound /> : (
+            <Container align='center'>
+                <Poster src={imagePath} />
+                <Heading style={{ gridArea: 'title' }}>{movie.title}</Heading>
+                <Paragraph style={{ gridArea: 'overview' }} fill>{movie.overview}</Paragraph>
+                <Paragraph style={{ gridArea: 'release' }} fill>Release date: {movie.release_date}</Paragraph>
+                <Paragraph style={{ gridArea: 'rating' }} fill>Rating: {movie.vote_average} Total votes: {movie.vote_count}</Paragraph>
+                <List onClickItem={(event: any) => handleClick(event)} style={{ gridArea: 'videos' }} data={videos.results && videos.results.map((video: any) => (video.name))} />
+            </Container>
+        )
     )
 }
