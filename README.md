@@ -1,4 +1,4 @@
-# AnttiSocial
+# Movie DB
 A movie database site built using TypeScript, React, Redux, Grommet and TMdb API.
 
 I wanted to build another project using Redux and TypeScript and I've always loved movies so this was a pretty obvious choice for me.
