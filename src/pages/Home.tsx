@@ -11,7 +11,7 @@ import TrailerCard from '../components/TrailerCard'
 import MovieCard from '../components/MovieCard'
 
 const apiKey = process.env.REACT_APP_API_KEY
-
+console.log(process.env.REACT_APP_API_KEY)
 const Home: React.FC = () => {
     const popularMovies = useSelector((state: RootState) => state.movies.movies.popularMovies)
     const topRated = useSelector((state: RootState) => state.movies.movies.topRated)
