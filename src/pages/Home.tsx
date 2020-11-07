@@ -11,14 +11,14 @@ import TrailerCard from '../components/TrailerCard'
 import MovieCard from '../components/MovieCard'
 
 const apiKey = process.env.REACT_APP_API_KEY
-console.log(process.env.REACT_APP_API_KEY)
 const Home: React.FC = () => {
     const popularMovies = useSelector((state: RootState) => state.movies.movies.popularMovies)
     const topRated = useSelector((state: RootState) => state.movies.movies.topRated)
     const playingNow = useSelector((state: RootState) => state.movies.movies.playingNow)
     const comingSoon = useSelector((state: RootState) => state.movies.movies.comingSoon)
     const dispatch = useDispatch()
-
+    
+    console.log(process.env.REACT_APP_API_KEY)
     useEffect(() => {
         //Get popular movies
         dispatch(getMovies(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1&region=GB`, SET_POPULAR))
